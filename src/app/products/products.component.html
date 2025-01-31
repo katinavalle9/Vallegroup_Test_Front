@@ -1,0 +1,45 @@
+<div class="container mt-4">
+    <h2 class="mb-4">Gestión de Productos</h2>
+    <button class="btn btn-primary mb-3" (click)="openModal()">➕ Nuevo Producto</button>
+    <table datatable [dtOptions]="dtOptions" class="table table-striped table-bordered"></table>
+  </div>
+
+  
+  <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="modalTitle" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalTitle">{{ selectedProductId ? 'Editar' : 'Nuevo' }} Producto</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="productForm">
+            <div class="mb-3">
+              <label for="name" class="form-label">Nombre</label>
+              <input type="text" id="name" class="form-control" formControlName="name" required>
+              <div *ngIf="productForm.controls['name'].invalid && productForm.controls['name'].touched" class="text-danger">
+                El nombre es obligatorio.
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="description" class="form-label">Descripción</label>
+              <textarea id="description" class="form-control" formControlName="description"></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="price" class="form-label">Precio</label>
+              <input type="text" id="price" class="form-control" formControlName="price" required>
+              <div *ngIf="productForm.controls['price'].invalid && productForm.controls['price'].touched" class="text-danger">
+                El precio es obligatorio.
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-success" (click)="addOrEditProduct()" [disabled]="productForm.invalid">
+            💾 {{ selectedProductId ? 'Actualizar' : 'Guardar' }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>

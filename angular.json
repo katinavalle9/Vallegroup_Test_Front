@@ -32,9 +32,17 @@
               }
             ],
             "styles": [
+              "node_modules/datatables.net-dt/css/dataTables.dataTables.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/datatables.net/js/dataTables.js",
+              "node_modules/datatables.net-bs5/js/dataTables.bootstrap5.js",
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+            ]
           },
           "configurations": {
             "production": {
